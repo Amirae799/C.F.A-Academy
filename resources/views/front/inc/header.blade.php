@@ -71,7 +71,7 @@ $total=0;
             </li>
 
             @elseif (Session::has('user'))
-              <li class="dropdown" style="margin-left:950px">
+              <li class="dropdown" style="margin-left:950px ">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                  style="color:orangered">{{Session::get('user')['name']}}
                     <span class="caret"></span></a>
@@ -80,7 +80,7 @@ $total=0;
                 </ul>
             </li>
 
-         
+
             @else
             <li class="nav-item dropdown" style="margin-left:500px " >
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"

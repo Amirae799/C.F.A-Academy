@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         if(!$user || Hash::check($request->password,
                 $user->password)){
-         return redirect(route('/'))->with(['error' => 'error in your data']);
+         return redirect(route('user.login'))->with(['error' => 'error in your data']);
 
         }
         else{
@@ -53,6 +53,6 @@ class LoginController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('/');
-}
+        return redirect('home');
+    }
 }

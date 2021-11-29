@@ -52,7 +52,7 @@ Route::prefix('user')->name('user.')->group(function () {
         Route::get('register','App\Http\Controllers\front\LoginController@getRegisterUser')->name('register');
         Route::post('store','App\Http\Controllers\front\LoginController@store')->name('store');
         Route::get('logout','App\Http\Controllers\front\LoginController@logout')->name('userLogout');
-      //  Route::get('/','App\Http\Controllers\front\LoginController@index')->name('userprofile');
+        Route::get('/','App\Http\Controllers\front\UserController@index')->name('userprofile');
 
 
    // });
