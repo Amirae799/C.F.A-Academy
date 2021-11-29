@@ -8,31 +8,33 @@
 
 }
     </style>
+
 <section class="h-100 h-custom" >
+    <div class="d-flex justify-content-between mb-3" style="margin:30px">
+
+        <a href="{{route('admin.allUsers')}}"
+             class="btn btn-primary">Back</a>
+      </div>
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-8 col-xl-6">
-            <div class="d-flex justify-content-between mb-3">
-
-                <a href="{{route('admin.allUsers')}}"
-                     class="btn btn-primary">Back </a>
-              </div>
           <div class="card rounded-3">
             <div class="card-body p-4 p-md-5">
                 <img class="center" src="{{asset('images/logo2.png')}}" style=";height:100px">
-<p style="text-align: center;color:#ff8b02"> Add New User</p>
+              <form class="px-md-2" action="{{route('admin.updateUser',$users->id)}}" method="POST">
 
-              <form class="px-md-2" action="{{route('admin.saveUser')}}" method="POST">
 @csrf
 @if(Session::has('success'))
 <div class="alert alert-success" role="alert">
     {{ Session::get('success') }}
 </div>
 @endif
-                <div class="form-outline mb-4">
 
+
+                <div class="form-outline mb-4">
+<p style="text-align: center;color:#ff8b02">update user</p>
                   <label class="form-label" for="form3Example1q">Name</label>
-                  <input type="text" id="form3Example1q" name="name" placeholder="enter user name" class="form-control" />
+                  <input type="text"  name="name" value="{{$users->name}}" class="form-control" />
                   @error('name')
                   <small class="form-text text-danger">{{$message}}</small>
                   @enderror
@@ -41,7 +43,7 @@
                   <div class="form-outline mb-4">
 
                     <label class="form-label" for="form3Example1q">Email</label>
-                    <input type="email" id="form3Example1q" name="email"   placeholder="enter user email" class="form-control" />
+                    <input type="email"  name="email"  value="{{$users->email}}" class="form-control" />
                     @error('email')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -49,34 +51,36 @@
                   <div class="form-outline mb-4">
 
                     <label class="form-label" for="form3Example1q">Password</label>
-                    <input type="password" id="form3Example1q" name="password"   placeholder="enter user password" class="form-control" />
+                    <input type="password"  name="password"  value="{{$users->password}}"  class="form-control" />
                     @error('password')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
 
                 <div class="form-outline mb-4">
-                    <div class="form-group">
-                        <label >Roles</label>
-                      <div class="checkbox">
-                       <p> <input type="checkbox"  style="margin: 10px" name="roles[]"  value="student" >
+                    <label >Roles</label>z
+                    <div class="checkbox">
 
-                        <span>student</span></p>
+                     <p > <input type="checkbox"  style="margin: 10px;" name="roles[]"
+                         value="student" {{$users->hasRole('student')?'checked': ''}}><span> student</span></p>
 
-                      </p>
-                      </div>
-                      <div class="checkbox">
+                    </p>
 
-                        <p> <input type="checkbox" style="margin: 10px" name="roles[]"  value="parent">
-                            <span> parent</span></p>
+                    </div>
+                    <div class="checkbox">
 
-                      </p>
-                      </div>
+                      <p > <input type="checkbox" style="margin: 10px;" name="roles[]"
+                        value="parent" {{$users->hasRole('parent')?'checked': ''}}><span>parent</span></p>
+
+                    </p>
+                    </div>
+
+
 
                 </div>
 
 
-                <button type="submit" class="btn_1">Add</button>
+                <button type="submit" class="btn_1">update</button>
 
               </form>
 

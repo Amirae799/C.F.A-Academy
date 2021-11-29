@@ -46,7 +46,7 @@ use App\Models\Admin;
     <a class="nav-link" href="{{route('admin.allTrainers')}}">Trainers</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="">Roles</a>
+    <a class="nav-link" href="{{route('admin.allRoles')}}">Roles</a>
 </li>
 
 <li class="nav-item">
@@ -55,21 +55,19 @@ use App\Models\Admin;
 <li class="nav-item">
     <a class="nav-link" href="{{route('admin.allUsers')}}">Users</a>
 </li>
-@endif
+
 
             <li class="nav-item">
                 <a class="nav-link" href="">Contact us</a>
             </li>
 
             @if(Session::has('admin'))
-            <img src="" style="width:30px">
-            <li class="dropdown" style="text-align: center">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="" style="color:lightseagreen">
-                  {{Session::get('admin')['name']}}
+            <li class="dropdown" style="margin-left:950px">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                 style="color:orangered">{{Session::get('admin')['name']}}
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/logout" style="padding: 20px;color:lightseagreen">logout</a></li>
-
+                    <li><a href="" style="padding: 20px;color:">logout</a></li>
                 </ul>
             </li>
 
@@ -99,6 +97,6 @@ use App\Models\Admin;
             </li>
             @endif
         </ul>
-
+        @endif
     </div>
 </nav>

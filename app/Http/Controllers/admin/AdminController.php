@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('guest:admin')->except('logout');
+       // $this->middleware('guest:admin')->except('logout');
     }
 
     public function index(){
@@ -41,14 +41,15 @@ class AdminController extends Controller
     }
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
+       $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|string',
         ]);
-
+      //  $admin=Admin::where(["email"=>$request->email])->first();
         // Try Login
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended(route('dashboard'))->with(['success' =>'login is done ']);
+         //   Auth::guard('admin')->session()->put('admin',$admin);
+            return view('admin.dashboard')->with(['success' =>'login is done ']);
         }
         // If Not Success Login
         return redirect()->back()->withErrors(['email' => 'البيانات الخاصة بك غير صحيحة']);

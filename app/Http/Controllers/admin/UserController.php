@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 use App\Models\User;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Facade\FlareClient\View;
+
 use Illuminate\Support\Facades\Session;
 
 //55
@@ -56,5 +59,27 @@ public function save(Request $request){
     }
     return redirect()->back()->with('error','Error in addtion!');
 
+}
+public function edit($id){
+    $data['users']=User::find($id);
+    return view('admin.updateUser')->with($data);
+   // return view('admin.updateUser',compact('users'));
+}
+public function update(Request $request ,$id){
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'roles' => 'required'
+      ]);
+
+      $user = User::find($id);
+      $requestData = $request->except('password');
+      $user->update($requestData);
+      $user->syncRoles($request->roles);
+      return view('admin.getAllUsers');
+}
+public function roles(){
+    $data['roles']=Role::select('*')->get();
+        return view('admin.roles')->with($data);
 }
 }

@@ -12,8 +12,8 @@ $total=0;
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" >
     <!-- Brand -->
-    <a class="navbar-brand" href="/"><img style="width: 50px" src="{{asset('images/logo2.png')}}"></a>
-
+    <a class="navbar-brand" href="/"><img style="width:50px;margin-left:120px " src="{{asset('images/logo2.png')}}"></a>
+<p  class="display-6" style="color: #ff8b02">Coding For All</p>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@ $total=0;
                     </a>
 
             </li>
-          
+
 
 
 @if (Auth::guard('admin')->check())
@@ -59,11 +59,7 @@ $total=0;
                 <a class="nav-link" href="">Contact us</a>
             </li>
 @endif
-@if(auth()->user()->hasRole('parent'))
-<li class="nav-item">
-    <a class="nav-link" href="">Profile</a>
-</li>
-@endif
+
             @if(Session::has('trainer'))
             <li class="dropdown" style="margin-left:950px">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -83,6 +79,8 @@ $total=0;
                     <li><a href="{{route('user.userLogout')}}" style="padding: 20px;color:">logout</a></li>
                 </ul>
             </li>
+
+         
             @else
             <li class="nav-item dropdown" style="margin-left:500px " >
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"

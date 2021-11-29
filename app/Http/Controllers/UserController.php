@@ -12,15 +12,16 @@ class UserController extends Controller
 {
     //
     public function home(){
-       $data['courses']=Course::select('id','name','small_des','cat_id','trainer_id','photo','price')
-        ->OrderBy('id','desc')
-        ->take('3')
+    //    $data['courses']=Course::select('id','name','small_des','photo','price')
+    //     ->OrderBy('id','desc')
+    //     ->take('3')
+    //     ->get();
 
-        ->get();
+        $data['courses'] = Course::with('cat')->OrderBy('id','desc')->take('3')->get();
         $data['Trainers_count']=Trainer::count();
         $data['Courses_count']=Course::count();
         $data['Students_count']=Student::count();
-//dd($data);
+//dd($data['courses']);
         return view('front.home')->with($data);
     }
 

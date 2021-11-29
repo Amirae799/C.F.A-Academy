@@ -15,7 +15,6 @@
           <div class="card rounded-3">
             <div class="card-body p-4 p-md-5">
                 <img class="center" src="{{asset('images/logo2.png')}}" style=";height:100px">
-
               <form class="px-md-2" action="{{route('admin.updateTrainer')}}" method="POST">
 @csrf
 @if(Session::has('success'))

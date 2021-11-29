@@ -1,8 +1,19 @@
 @extends('front.inc.master1')
 @section('Content')
-<div class="container-login"  style="margin-top:150px">
-<h4>All Courses     <button style="margin-left:1500px" class="btn btn-primary">Add </button>
-</h4>
+<div class="container-login"  style="margin:100px">
+</tbody>
+@if(Session::has('success'))
+<div class="alert alert-success" role="alert">
+    {{ Session::get('success') }}
+</div>
+@endif
+
+<div class="d-flex justify-content-between mb-3">
+<h4>All Courses</h4>
+  <a href="{{route('admin.addCourse')}}"
+       class="btn btn-primary">Add New Course </a>
+</div>
+
 
     <table class="table table-hover" >
         <thead>

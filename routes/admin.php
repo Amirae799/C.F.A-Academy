@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+//use App\Http\Controllers\admin\CourseController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\CatController;
@@ -37,18 +38,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/','App\Http\Controllers\admin\AdminController@index')->name('dashboard');
         Route::get('allstudents','App\Http\Controllers\admin\AdminController@allStudent')->name('allStudents');
         Route::get('allcategories','App\Http\Controllers\admin\CatController@allCategory')->name('allCategories');
+        //trainers//
         Route::get('alltrainers','App\Http\Controllers\admin\TrainerController@allTrainers')->name('allTrainers');
-        Route::get('allcourses','App\Http\Controllers\CourseController@allCourses')->name('allCourses');
         Route::get('addTrainer','App\Http\Controllers\admin\TrainerController@addTrainer')->name('addTrainer');
         Route::post('saveTrainer','App\Http\Controllers\admin\TrainerController@saveTrainer')->name('saveTrainer');
         Route::get('deleteTrainer/{id}','App\Http\Controllers\admin\TrainerController@delete')->name('delete');
-//user//
+        //user//
         Route::get('allUsers','App\Http\Controllers\admin\UserController@all')->name('allUsers');
         Route::get('addUser','App\Http\Controllers\admin\UserController@add')->name('addUser');
         Route::post('saveUser','App\Http\Controllers\admin\UserController@save')->name('saveUser');
         Route::get('deleteUser/{id}','App\Http\Controllers\admin\UserController@delete')->name('deleteUser');
-       // Route::get('edit/{id}','App\Http\Controllers\admin\TrainerController@edit')->name('editTrainer');
-       // Route::post('update','App\Http\Controllers\admin\TrainerController@update')->name('updateTrainer');
+        Route::get('editUser/{id}','App\Http\Controllers\admin\UserController@edit')->name('editUser');
+        Route::post('update/{id}','App\Http\Controllers\admin\UserController@update')->name('updateUser');
+        Route::get('roles','App\Http\Controllers\admin\UserController@roles')->name('allRoles');
+        //course//
+        Route::get('allcourses','App\Http\Controllers\admin\CourseController@allCourses')->name('allCourses');
+        Route::get('addCourse','App\Http\Controllers\admin\CourseController@create')->name('addCourse');
+
 
 
     });

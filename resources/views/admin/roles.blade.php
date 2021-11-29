@@ -9,8 +9,8 @@
 @endif
 
 <div class="d-flex justify-content-between mb-3">
-<h4>All Users</h4>
-  <a href="{{route('admin.addUser')}}" 
+
+  <a href=""
        class="btn btn-primary">Add </a>
 </div>
 
@@ -22,9 +22,9 @@
 
 
 
-         <th scope="col" >email</th>
-         <th scope="col" >password</th>
-         <th scope="col">Role</th>
+         <th scope="col" >Display_Name</th>
+         <th scope="col" >Description</th>
+
           <th scope="col">operation</th>
 
         </tr>
@@ -32,32 +32,20 @@
         <tbody>
 
 
-          @foreach($users as $c)
+          @foreach($roles as $c)
           <tr>
               <th scope="row">{{$c -> id}}</th>
               <td>{{$c -> name}}</td>
-              <td>{{$c -> email}}</td>
-              <td>{{$c -> password}}</td>
-              <td>
-                @foreach ($c->roles as $role)
-                  {{$role->display_name}}
-                @endforeach
-              </td>
-              <td>
-                <a href="{{route('admin.editUser',$c->id)}}"  ><button class="btn btn-success">Update</button>
+              <td>{{$c -> display_name}}</td>
+              <td>{{$c ->description}}</td>
 
-              <a href="{{route('admin.deleteUser',$c->id)}}"  >
+
+              <td>
+                <a href=""  ><button class="btn btn-success">Update</button>
+
+              <a href=""  >
                  <button class="btn btn-danger" >Delete</button></a>
               </td>
-
-
-
-
-
-
-
-
-
 
           </tr>
         @endforeach
